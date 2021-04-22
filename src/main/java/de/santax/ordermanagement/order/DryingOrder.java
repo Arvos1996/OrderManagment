@@ -1,7 +1,5 @@
 package de.santax.ordermanagement.order;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -11,15 +9,7 @@ import java.util.Objects;
 @Table(name = "dryingorder")
 public class DryingOrder extends Order {
 
-    @SequenceGenerator(
-            name= "dryingOrder_sequence",
-            sequenceName ="dryingOrder_sequence",
-            allocationSize = 1)
-    @GeneratedValue(
-            generator = "dryingOrder_sequence",
-            strategy = GenerationType.SEQUENCE
-    )
-    @Id
+
     public Long dryingOrderId;
     public Date createDateOrder;
     public String userAuthor;
@@ -39,7 +29,7 @@ public class DryingOrder extends Order {
     public boolean releasedOrder;
     public boolean closedOrder;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "orderId" , insertable = false, updatable = false)
     public Order order;
 
     public DryingOrder() {
@@ -204,7 +194,7 @@ public class DryingOrder extends Order {
     @Override
     public String toString() {
         return "DryingOrder{" +
-                "id=" + id +
+                "id=" + orderId +
                 ", createDateOrder=" + createDateOrder +
                 ", userAuthor='" + userAuthor + '\'' +
                 ", settlement='" + settlement + '\'' +
@@ -227,11 +217,11 @@ public class DryingOrder extends Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DryingOrder that = (DryingOrder) o;
-        return releasedOrder == that.releasedOrder && closedOrder == that.closedOrder && Objects.equals(id, that.id) && Objects.equals(createDateOrder, that.createDateOrder) && Objects.equals(userAuthor, that.userAuthor) && Objects.equals(settlement, that.settlement) && Objects.equals(streetName, that.streetName) && Objects.equals(postalCode, that.postalCode) && Objects.equals(orderPlace, that.orderPlace) && typeOfOrder == that.typeOfOrder && Objects.equals(createDateOrderType, that.createDateOrderType) && entranceType == that.entranceType && damageType == that.damageType && Objects.equals(damageNumber, that.damageNumber) && Objects.equals(insuranceNumber, that.insuranceNumber);
+        return releasedOrder == that.releasedOrder && closedOrder == that.closedOrder && Objects.equals(orderId, that.orderId) && Objects.equals(createDateOrder, that.createDateOrder) && Objects.equals(userAuthor, that.userAuthor) && Objects.equals(settlement, that.settlement) && Objects.equals(streetName, that.streetName) && Objects.equals(postalCode, that.postalCode) && Objects.equals(orderPlace, that.orderPlace) && typeOfOrder == that.typeOfOrder && Objects.equals(createDateOrderType, that.createDateOrderType) && entranceType == that.entranceType && damageType == that.damageType && Objects.equals(damageNumber, that.damageNumber) && Objects.equals(insuranceNumber, that.insuranceNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, createDateOrder, userAuthor, settlement, streetName, postalCode, orderPlace, typeOfOrder, createDateOrderType, entranceType, damageType, damageNumber, insuranceNumber, releasedOrder, closedOrder);
+        return Objects.hash(orderId, createDateOrder, userAuthor, settlement, streetName, postalCode, orderPlace, typeOfOrder, createDateOrderType, entranceType, damageType, damageNumber, insuranceNumber, releasedOrder, closedOrder);
     }
 }

@@ -27,25 +27,14 @@ public class Order {
             strategy = GenerationType.SEQUENCE
     )
     @Id
-    public Long id;
+    public Long orderId;
     public Date createDateOrder;
     public String userAuthor;
     public String settlement;
     public String streetName;
     public Long postalCode;
     public String orderPlace;
-    @Enumerated(EnumType.STRING)
-    public TypeOfOrder typeOfOrder;
-    public Date createDateOrderType;
-    @Enumerated(EnumType.STRING)
-    public EntranceType entranceType;
-    @Enumerated(EnumType.STRING)
-    public DamageType damageType;
-    public String damageNumber;
-    public String insuranceNumber;
-    public boolean releasedOrder;
-    public boolean closedOrder;
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy="dryingOrder")
     private Set<DryingOrder> dryingOrder;
 
 }
