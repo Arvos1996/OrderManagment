@@ -16,7 +16,7 @@ public class DryingOrder extends Order {
     public String settlement;
     public String streetName;
     public Long postalCode;
-    public String orderPlace;
+    public String cityName;
     @Enumerated(EnumType.STRING)
     public TypeOfOrder typeOfOrder;
     public Date createDateOrderType;
@@ -36,14 +36,14 @@ public class DryingOrder extends Order {
 
     }
 
-    public DryingOrder(Long dryingOrderId, Date createDateOrder, String userAuthor, String settlement, String streetName, Long postalCode, String orderPlace, TypeOfOrder typeOfOrder, Date createDateOrderType, EntranceType entranceType, DamageType damageType, String damageNumber, String insuranceNumber, boolean releasedOrder, boolean closedOrder) {
+    public DryingOrder(Long dryingOrderId, Date createDateOrder, String userAuthor, String settlement, String streetName, Long postalCode, String cityName, TypeOfOrder typeOfOrder, Date createDateOrderType, EntranceType entranceType, DamageType damageType, String damageNumber, String insuranceNumber, boolean releasedOrder, boolean closedOrder) {
         this.dryingOrderId = dryingOrderId;
         this.createDateOrder = createDateOrder;
         this.userAuthor = userAuthor;
         this.settlement = settlement;
         this.streetName = streetName;
         this.postalCode = postalCode;
-        this.orderPlace = orderPlace;
+        this.cityName = cityName;
         this.typeOfOrder = typeOfOrder;
         this.createDateOrderType = createDateOrderType;
         this.entranceType = entranceType;
@@ -54,13 +54,13 @@ public class DryingOrder extends Order {
         this.closedOrder = closedOrder;
     }
 
-    public DryingOrder(Date createDateOrder, String userAuthor, String settlement, String streetName, Long postalCode, String orderPlace, TypeOfOrder typeOfOrder, Date createDateOrderType, EntranceType entranceType, DamageType damageType, String damageNumber, String insuranceNumber, boolean releasedOrder, boolean closedOrder) {
+    public DryingOrder(Date createDateOrder, String userAuthor, String settlement, String streetName, Long postalCode, String cityName, TypeOfOrder typeOfOrder, Date createDateOrderType, EntranceType entranceType, DamageType damageType, String damageNumber, String insuranceNumber, boolean releasedOrder, boolean closedOrder) {
         this.createDateOrder = createDateOrder;
         this.userAuthor = userAuthor;
         this.settlement = settlement;
         this.streetName = streetName;
         this.postalCode = postalCode;
-        this.orderPlace = orderPlace;
+        this.cityName = cityName;
         this.typeOfOrder = typeOfOrder;
         this.createDateOrderType = createDateOrderType;
         this.entranceType = entranceType;
@@ -119,12 +119,12 @@ public class DryingOrder extends Order {
         this.postalCode = postalCode;
     }
 
-    public String getOrderPlace() {
-        return orderPlace;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setOrderPlace(String orderPlace) {
-        this.orderPlace = orderPlace;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     public TypeOfOrder getTypeOfOrder() {
@@ -200,7 +200,7 @@ public class DryingOrder extends Order {
                 ", settlement='" + settlement + '\'' +
                 ", streetName='" + streetName + '\'' +
                 ", postalCode=" + postalCode +
-                ", orderPlace='" + orderPlace + '\'' +
+                ", orderPlace='" + cityName + '\'' +
                 ", typeOfOrder=" + typeOfOrder +
                 ", createDateOrderType=" + createDateOrderType +
                 ", entranceType=" + entranceType +
@@ -217,11 +217,11 @@ public class DryingOrder extends Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DryingOrder that = (DryingOrder) o;
-        return releasedOrder == that.releasedOrder && closedOrder == that.closedOrder && Objects.equals(orderId, that.orderId) && Objects.equals(createDateOrder, that.createDateOrder) && Objects.equals(userAuthor, that.userAuthor) && Objects.equals(settlement, that.settlement) && Objects.equals(streetName, that.streetName) && Objects.equals(postalCode, that.postalCode) && Objects.equals(orderPlace, that.orderPlace) && typeOfOrder == that.typeOfOrder && Objects.equals(createDateOrderType, that.createDateOrderType) && entranceType == that.entranceType && damageType == that.damageType && Objects.equals(damageNumber, that.damageNumber) && Objects.equals(insuranceNumber, that.insuranceNumber);
+        return releasedOrder == that.releasedOrder && closedOrder == that.closedOrder && Objects.equals(orderId, that.orderId) && Objects.equals(createDateOrder, that.createDateOrder) && Objects.equals(userAuthor, that.userAuthor) && Objects.equals(settlement, that.settlement) && Objects.equals(streetName, that.streetName) && Objects.equals(postalCode, that.postalCode) && Objects.equals(cityName, that.cityName) && typeOfOrder == that.typeOfOrder && Objects.equals(createDateOrderType, that.createDateOrderType) && entranceType == that.entranceType && damageType == that.damageType && Objects.equals(damageNumber, that.damageNumber) && Objects.equals(insuranceNumber, that.insuranceNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, createDateOrder, userAuthor, settlement, streetName, postalCode, orderPlace, typeOfOrder, createDateOrderType, entranceType, damageType, damageNumber, insuranceNumber, releasedOrder, closedOrder);
+        return Objects.hash(orderId, createDateOrder, userAuthor, settlement, streetName, postalCode, cityName, typeOfOrder, createDateOrderType, entranceType, damageType, damageNumber, insuranceNumber, releasedOrder, closedOrder);
     }
 }

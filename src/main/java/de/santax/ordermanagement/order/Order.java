@@ -33,7 +33,7 @@ public class Order {
     public String settlement;
     public String streetName;
     public Long postalCode;
-    public String orderPlace;
+    public String cityName;
     @OneToMany(mappedBy="dryingOrder")
     private Set<DryingOrder> dryingOrder;
 
